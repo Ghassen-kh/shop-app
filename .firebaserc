@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shop-app-29324": {
+      "hosting": {
+        "shop-app": [
+          "shop-app-29324"
+        ]
+      }
+    }
+  }
+}
