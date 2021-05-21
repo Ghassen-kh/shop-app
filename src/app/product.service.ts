@@ -12,4 +12,13 @@ export class ProductService {
   getAll(){
     return this.db.list('/products');
   }
+  get(productId){
+    return this.db.object('/products/' + productId).valueChanges();
+  }
+  update(productId, product){
+    return this.db.object('/products/' + productId).update(product);
+  }
+  delete(productId){
+    return this.db.object('/products/' + productId).remove();
+  }
 }
