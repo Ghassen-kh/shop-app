@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { title } from 'process';
 import { map, take } from 'rxjs/operators';
 import { CategoryService } from 'src/app/category.service';
 import { Product } from 'src/app/models/product';
@@ -27,9 +26,10 @@ export class ProductFormComponent implements OnInit {
       .snapshotChanges()
       .pipe(map(c => ({
          val: c.payload.val(),
-         key: c.payload.key,
+         key: c.key,
       }))).pipe(take(1))
       .subscribe(p => { this.product = p;
+                        console.log(this.product);
       }
       );
     }

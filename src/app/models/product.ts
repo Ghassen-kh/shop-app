@@ -1,9 +1,8 @@
 export interface Product {
-    key: string;
-    val: { title: string;
+    [key: string]: {
+        title: string;
         price: number;
         category: string;
         imageUrl: string;
     };
-
 }

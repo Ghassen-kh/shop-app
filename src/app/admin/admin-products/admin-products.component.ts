@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/product.service';
 
@@ -7,16 +8,27 @@ import { ProductService } from 'src/app/product.service';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent  {
-  products$;
+export class AdminProductsComponent implements OnDestroy  {
+  products: any[];
+  filteredProducts: any[];
+  subscription: Subscription;
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.getAll()
+    this.subscription = this.productService.getAll()
     .snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({
           key: c.payload.key,
           val: c.payload.val()}))
       )
-    );
+    ).subscribe(products => this.filteredProducts = this.products = products);
+  }
+  filter(query: string){
+    this.filteredProducts = (query) ?
+      this.products.filter(p => p.val.title.toLowerCase().includes(query.toLowerCase())) :
+      this.products;
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }
