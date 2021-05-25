@@ -29,6 +29,15 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ProductService } from './product.service';
 import { DataTablesModule } from 'angular-datatables';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +52,9 @@ import { DataTablesModule } from 'angular-datatables';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,8 +66,12 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule,
     FormsModule,
     CustomFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', component: ProductsComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
@@ -69,7 +84,8 @@ import { DataTablesModule } from 'angular-datatables';
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

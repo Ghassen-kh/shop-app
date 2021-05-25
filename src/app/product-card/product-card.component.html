@@ -1,0 +1,8 @@
+<div class="card" style="width: 15rem;">
+    <img *ngIf="product.val.imageUrl" [src]=product.val.imageUrl class="{{product.val.title}}" alt="{{ product.val.title }}" >
+    <div class="card-body">
+        <h4 class="card-title">{{product.val.title}}</h4>
+        <p class="card-text">{{ product.val.price | currency:'USD':true}}</p>
+        <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+</div>
