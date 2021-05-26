@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+<nav class="navbar  navbar-expand-md navbar-light bg-light mb-4">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink = "/">Shop Application</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,12 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+            <a class="nav-link" routerLink="/shopping-cart">
+              Shopping Cart
+              <span class="badge bg-secondary bg-warning bg-pill">
+                {{shoppingCartItemCount}}
+              </span>
+            </a>
           </li>
           <ng-template #anonymousUser>
             <li  class="nav-item">

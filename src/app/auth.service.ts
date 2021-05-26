@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { AppUser } from './models/app-user';
 import { UserService } from './user.service';
 import { of } from 'rxjs';
+import { VoidExpression } from 'typescript';
 
 
 @Injectable()
@@ -19,13 +20,13 @@ export class AuthService {
       this.user$ = afAuth.authState;
   }
 
-  login(){
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+  login(): void{
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
     this.afAuth.signInWithRedirect( new firebase.auth.GoogleAuthProvider());
   }
 
-  logout(){
+  logout(): void{
     this.afAuth.signOut();
   }
   get appUser$(): Observable<AppUser> {
