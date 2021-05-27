@@ -14,7 +14,11 @@
         <tbody>
             <tr *ngFor="let productId of productIds">
                 <td>{{cart.items[productId].product.val.title}}</td>
-                <td>{{cart.items[productId].quantity}}</td>
+                <td>
+                    <product-quantity [product]="cart.items[productId].product" [shopping-cart]="cart">
+
+                    </product-quantity>
+                </td>
                 <td>
                     {{cart.items[productId].product.val.price * cart.items[productId].quantity | currency:'USD':true}}
                 </td>
@@ -28,4 +32,7 @@
             </tr>
         </tfoot>
     </table>
+    <button 
+    (click)="clearCart()"
+    class="btn btn-danger btn-sm">Clear Shoping Cart</button>
 </ng-container>

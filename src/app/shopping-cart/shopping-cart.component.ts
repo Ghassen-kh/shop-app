@@ -29,7 +29,8 @@ export class ShoppingCartComponent implements OnInit {
       this.productIds = Object.keys(cart.items);
 
     });
-
-
+  }
+  clearCart(){
+    this.shoppingCartService.clearCart();
   }
 }
