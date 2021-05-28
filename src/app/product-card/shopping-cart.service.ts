@@ -57,6 +57,10 @@ export class ShoppingCartService {
     if (item){
         // tslint:disable-next-line:no-string-literal
         item$.update({ product, quantity: (item['quantity'] || 0) + change});
+        if((item['quantity']) + change === 0){
+          item$.update({ product, quantity: 0});
+          item$.remove();
+        }
       } else {
         item$.update({ product, quantity: 1});
       }
