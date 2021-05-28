@@ -40,6 +40,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './product-card/shopping-cart.service';
 import { ProductQuantityComponent } from './shopping-cart/product-quantity/product-quantity.component';
 import { OrderService } from './order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { OrderService } from './order.service';
     ProductFilterComponent,
     ProductCardComponent,
     ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,7 @@ import { OrderService } from './order.service';
       {path: 'login', component: LoginComponent},
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
+      {path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
       {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
 
       {path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
