@@ -39,6 +39,7 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './product-card/shopping-cart.service';
 import { ProductQuantityComponent } from './shopping-cart/product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { ProductQuantityComponent } from './shopping-cart/product-quantity/produ
     AdminAuthGuard,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
